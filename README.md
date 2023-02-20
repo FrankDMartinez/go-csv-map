@@ -3,7 +3,7 @@ A wrapper around golang's encoding/csv providing map-based access
 
 ## Installation
 
-    go get github.com/recursionpharma/go-csv-map
+    go get github.com/FrankDMartinez/go-csv-map
 
 ## Usage
 
@@ -16,7 +16,7 @@ A wrapper around golang's encoding/csv providing map-based access
         "fmt"
         "os"
 
-        "github.com/recursionpharma/go-csv-map"
+        "github.com/FrankDMartinez/go-csv-map"
     )
 
     buf := bytes.NewBufferString("Album,Year\nDark Side of the Moon,1973\nExile On Main St,1972")
