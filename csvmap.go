@@ -32,7 +32,7 @@ func (r *Reader) Read() (record map[string]string, err error) {
 	var rawRecord []string
 	rawRecord, err = r.Reader.Read()
 	length := min(len(rawRecord), len(r.Columns))
-	record = make(map[string]string)
+	record = make(map[string]string, length)
 	for index := 0; index < length; index++ {
 		column := r.Columns[index]
 		if _, exists := record[column]; exists {

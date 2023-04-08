@@ -24,7 +24,7 @@ func TestReadHeader(t *testing.T) {
 			reader.Reader.FieldsPerRecord = 3
 			columns, err := reader.ReadHeader()
 			Convey("A record should be returned", func() { So(columns, ShouldResemble, []string{"foo", "bar"}) })
-			Convey("The error message should contain...", func() { So(err.Error(), ShouldContainSubstring, "wrong number of fields in line") })
+			Convey("The error message should contain...", func() { So(err.Error(), ShouldContainSubstring, "wrong number of fields") })
 		})
 		Convey("If there is a next row", func() {
 			expectedColumns := []string{"foo", "bar", "baz"}
@@ -56,7 +56,7 @@ func TestRead(t *testing.T) {
 			reader.Reader.FieldsPerRecord = 5
 			columns, err := reader.Read()
 			Convey("A record should be returned", func() { So(columns, ShouldResemble, map[string]string{"A": "foo", "Day": "bar"}) })
-			Convey("The error message should contain...", func() { So(err.Error(), ShouldContainSubstring, "wrong number of fields in line") })
+			Convey("The error message should contain...", func() { So(err.Error(), ShouldContainSubstring, "wrong number of fields") })
 		})
 		Convey("If the row contains fewer columns than Reader.Columns", func() {
 			reader := NewReader(bytes.NewBufferString("foo,bar"))
@@ -94,7 +94,7 @@ func TestReadAll(t *testing.T) {
 			reader.Reader.FieldsPerRecord = 3
 			records, err := reader.ReadAll()
 			Convey("No record should be returned", func() { So(records, ShouldBeEmpty) })
-			Convey("The error message should contain", func() { So(err.Error(), ShouldContainSubstring, "wrong number of fields in line") })
+			Convey("The error message should contain", func() { So(err.Error(), ShouldContainSubstring, "wrong number of fields") })
 		})
 		Convey("If everything is good", func() {
 			reader := NewReader(bytes.NewBufferString("foo,bar\nfiz,buz"))
